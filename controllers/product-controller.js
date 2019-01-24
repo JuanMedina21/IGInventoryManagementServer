@@ -25,7 +25,7 @@ router.get('/product/:id', validateSession, (req, res) => {
 })
 
 router.get('/product', validateSession, (req, res) => {
-    Product.findAll()
+    Product.findAll({ where: { owner: req.user.id }})
         .then(product => res.status(200).json(product))
         .catch(err => res.status(500).json({ error: err }))
 })
