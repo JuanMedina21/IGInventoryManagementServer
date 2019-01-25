@@ -31,7 +31,7 @@ router.get('/product', validateSession, (req, res) => {
 })
 
 router.put('/product/:id', validateSession, (req, res) => {
-    Product.update(req.body, { where: { id: req.params.id } })
+    Product.update(req.body.log, { where: { id: req.params.id } })
         .then(product => res.status(200).json(product))
         .catch(err => res.status(500).json({ error: err}))
 })
